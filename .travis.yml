@@ -6,7 +6,7 @@ mysql:
   username: root
   encoding: utf8
 before_script:
-  - find ~/.phpenv php-cgi
+  - find ~/.phpenv php-cgi && false
   - pyrus channel-discover pear.drush.org
   - pyrus install drush/drush
   - phpenv rehash
