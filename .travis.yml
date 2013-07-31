@@ -5,7 +5,6 @@ mysql:
   database: drupal
   username: root
   encoding: utf8
-env: DOCROOT=/tmp/openatrium
 before_script:
   - pyrus channel-discover pear.drush.org
   - pyrus install drush/drush
