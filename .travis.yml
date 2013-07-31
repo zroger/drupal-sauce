@@ -16,5 +16,5 @@ before_script:
   - drush cc all
   - drush runserver 8080 &
   - cd -
-  - composer install || composer install
+  - composer install --prefer-source
 script: bin/behat --profile=travis-ci
