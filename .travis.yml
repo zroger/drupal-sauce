@@ -6,7 +6,6 @@ mysql:
   username: root
   encoding: utf8
 before_script:
-  - find ~/.phpenv php-cgi && false
   - pyrus channel-discover pear.drush.org
   - pyrus install drush/drush
   - phpenv rehash
@@ -15,7 +14,7 @@ before_script:
   - cd build/html
   - drush -v site-install standard --db-url=mysql://root:@localhost/drupal --yes
   - drush cc all
-  - drush runserver 8080 &
+  - drush runserver --php-cgi=~/.phpenv/versions/5.3.3/bin/php-cgi 8080 &
   - cd -
   - composer install --prefer-source
 script: bin/behat --profile=travis-ci
