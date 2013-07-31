@@ -13,7 +13,7 @@ before_script:
   - mkdir -p build
   - drush -v make drupal-sauce.make build/html
   - cd build/html
-  - drush -v site-install standard --db-url=mysql://root:@localhost/drupal
+  - drush -v site-install standard --db-url=mysql://root:@localhost/drupal --yes
   - drush cc all
   - drush runserver 8080 &
   - cd -
