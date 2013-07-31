@@ -1,0 +1,17 @@
+default:
+  extensions:
+    Behat\MinkExtension\Extension:
+      goutte:
+        guzzle_parameters:
+          ssl.certificate_authority: false
+
+travis-ci:
+  extensions:
+    Behat\MinkExtension\Extension:
+      selenium2: ~
+      base_url: "http://localhost:8080/"
+    Drupal\DrupalExtension\Extension:
+      api_driver: drupal
+      blackbox: ~
+      drupal:
+        drupal_root: "build/html"

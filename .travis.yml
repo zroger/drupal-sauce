@@ -1,0 +1,21 @@
+language: php
+php:
+  - 5.3
+mysql:
+  database: drupal
+  username: root
+  encoding: utf8
+env: DOCROOT=/tmp/openatrium
+before_script:
+  - pyrus channel-discover pear.drush.org
+  - pyrus install drush/drush
+  - phpenv rehash
+  - mkdir -p build
+  - drush -v make drupal-sauce.make build/html
+  - cd build/html
+  - drush -v site-install standard --db-url=mysql://root:@localhost/drupal
+  - drush cc all
+  - drush runserver 8080 &
+  - cd -
+  - composer install
+script: bin/behat --profile=travis-ci
